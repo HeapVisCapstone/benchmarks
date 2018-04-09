@@ -3,3 +3,6 @@
 hs_err_pid*
 trace
 *.list
+
+project/
+target/
