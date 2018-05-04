@@ -4,6 +4,18 @@ import java.util.concurrent.locks.*;
 public class ConcurrentBST<T extends Comparable<T>>
 {
 
+    static class StartSentinel {
+        public StartSentinel() {
+            System.out.println("Starting main...");
+        }
+    }
+
+    static class EndSentinel {
+        public EndSentinel() {
+            System.out.println("Ending main...");
+        }
+    }
+
     private ReadWriteLock mx;
     private Node<T> root;
     private static Random rand = new Random();
@@ -113,6 +125,8 @@ public class ConcurrentBST<T extends Comparable<T>>
     }
 
     public static void main(String[] args) {
+        StartSentinel startobj = new StartSentinel();
+    
         int numThreads = 1;
 
         if (args.length == 0) {
@@ -149,5 +163,7 @@ public class ConcurrentBST<T extends Comparable<T>>
         }
 
         t.inOrder();
+        
+        EndSentinel endobj = new EndSentinel();
     }       
 }
